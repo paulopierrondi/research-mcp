@@ -1,5 +1,13 @@
 # Deployment Guide
 
+## ✅ Currently Deployed
+
+**Production URL:** https://research-mcp-production-f084.up.railway.app
+
+Server is **always running** on Railway. Use this URL to add to Claude personal.
+
+---
+
 ## Local Development
 
 ### Option 1: Systemd (Linux/macOS)

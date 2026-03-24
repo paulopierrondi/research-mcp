@@ -29,11 +29,12 @@ npm start
 # Runs on http://localhost:3000
 ```
 
-### 3. Add to Claude
+### 3. Add to Claude (Production)
 
 In Claude personal Settings → MCP Servers → Add:
-- **URL**: http://localhost:3000/mcp
-- **Name**: research-mcp
+- **URL**: `https://research-mcp-production-f084.up.railway.app/mcp`
+- **Name**: `research-mcp`
+- Auth: Leave blank
 
 ### 4. Use It
 
