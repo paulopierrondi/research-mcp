@@ -19,6 +19,17 @@ const httpServer = http.createServer(async (req, res) => {
   // Log request
   console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
 
+  // Handle CORS preflight
+  if (req.method === 'OPTIONS') {
+    res.writeHead(200, {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type'
+    });
+    res.end();
+    return;
+  }
+
   // OAuth discovery endpoints (for Claude compatibility)
   if (req.url === '/.well-known/oauth-authorization-server' && req.method === 'GET') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
@@ -57,7 +68,10 @@ const httpServer = http.createServer(async (req, res) => {
     res.writeHead(200, {
       'Content-Type': 'text/event-stream',
       'Cache-Control': 'no-cache',
-      'Connection': 'keep-alive'
+      'Connection': 'keep-alive',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type'
     });
 
     let body = '';
