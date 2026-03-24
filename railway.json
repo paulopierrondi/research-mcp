@@ -10,9 +10,26 @@
     "region": "us-west"
   },
   "env": {
-    "PORT": "3000",
-    "HISTORY_RETENTION_DAYS": "365",
-    "OPENAI_API_KEY": "$OPENAI_API_KEY",
-    "GOOGLE_API_KEY": "$GOOGLE_API_KEY"
+    "PORT": {
+      "$default": "3000"
+    },
+    "OPENAI_API_KEY": {
+      "$default": ""
+    },
+    "GOOGLE_API_KEY": {
+      "$default": ""
+    },
+    "TIMEOUT_MS": {
+      "$default": "6000"
+    },
+    "MAX_RETRIES": {
+      "$default": "1"
+    },
+    "HISTORY_RETENTION_DAYS": {
+      "$default": "365"
+    },
+    "MCP_HISTORY_DIR": {
+      "$default": "/app/data"
+    }
   }
 }
