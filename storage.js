@@ -2,7 +2,10 @@ import { promises as fs } from 'fs';
 import { homedir } from 'os';
 import { join } from 'path';
 
-const HISTORY_DIR = process.env.MCP_HISTORY_DIR || join(homedir(), '.mcp-search-history');
+// Use MCP_HISTORY_DIR env var, or /app/data in containers, or ~/.mcp-search-history locally
+const HISTORY_DIR = process.env.MCP_HISTORY_DIR || (
+  process.env.RAILWAY_ENVIRONMENT ? '/app/data' : join(homedir(), '.mcp-search-history')
+);
 const HISTORY_FILE = join(HISTORY_DIR, 'searches.json');
 
 // Ensure history directory exists

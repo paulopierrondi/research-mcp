@@ -22,7 +22,17 @@ const httpServer = http.createServer(async (req, res) => {
   // Health check endpoint
   if (req.url === '/' && req.method === 'GET') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ status: 'ok', service: 'research-mcp' }));
+    res.end(JSON.stringify({
+      status: 'ok',
+      service: 'research-mcp',
+      port: PORT,
+      env: {
+        OPENAI_API_KEY: process.env.OPENAI_API_KEY ? 'set' : 'missing',
+        GOOGLE_API_KEY: process.env.GOOGLE_API_KEY ? 'set' : 'missing',
+        MCP_HISTORY_DIR: process.env.MCP_HISTORY_DIR || 'default',
+        RAILWAY_ENVIRONMENT: process.env.RAILWAY_ENVIRONMENT || 'not-railway'
+      }
+    }));
     return;
   }
 
