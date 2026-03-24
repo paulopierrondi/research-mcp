@@ -6,10 +6,13 @@
   "deploy": {
     "startCommand": "node server.js",
     "numReplicas": 1,
-    "restartPolicyMaxRetries": 5
+    "restartPolicyMaxRetries": 5,
+    "region": "us-west"
   },
   "env": {
     "PORT": "3000",
-    "HISTORY_RETENTION_DAYS": "365"
+    "HISTORY_RETENTION_DAYS": "365",
+    "OPENAI_API_KEY": "$OPENAI_API_KEY",
+    "GOOGLE_API_KEY": "$GOOGLE_API_KEY"
   }
 }
