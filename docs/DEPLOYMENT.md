@@ -2,7 +2,7 @@
 
 ## ✅ Currently Deployed
 
-**Production URL:** https://research-mcp-production-f084.up.railway.app
+**Production URL:** https://research-mcp-production-f34c.up.railway.app
 
 Server is **always running** on Railway. Use this URL to add to Claude personal.
 

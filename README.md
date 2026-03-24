@@ -32,7 +32,7 @@ npm start
 ### 3. Add to Claude (Production)
 
 In Claude personal Settings → MCP Servers → Add:
-- **URL**: `https://research-mcp-production-f084.up.railway.app/mcp`
+- **URL**: `https://research-mcp-production-f34c.up.railway.app/mcp`
 - **Name**: `research-mcp`
 - Auth: Leave blank
 
