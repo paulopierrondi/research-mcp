@@ -19,6 +19,22 @@ const httpServer = http.createServer(async (req, res) => {
   // Log request
   console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
 
+  // OAuth discovery endpoints (for Claude compatibility)
+  if (req.url === '/.well-known/oauth-authorization-server' && req.method === 'GET') {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({
+      token_endpoint: `https://${req.headers.host}/token`,
+      authorization_endpoint: `https://${req.headers.host}/authorize`
+    }));
+    return;
+  }
+
+  if (req.url === '/.well-known/oauth-protected-resource' && req.method === 'GET') {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ protected_resource: true }));
+    return;
+  }
+
   // Health check endpoint
   if (req.url === '/' && req.method === 'GET') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
