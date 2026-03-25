@@ -56,13 +56,13 @@ export async function queryOpenAI(topic, context) {
 
   const call = () => withTimeout(
     getOpenAI().chat.completions.create({
-      model: 'gpt-4',
+      model: 'gpt-4o',
       messages: [
         { role: 'system', content: systemPrompt },
         { role: 'user', content: userPrompt }
       ],
       temperature: 0.7,
-      max_tokens: 2000
+      max_tokens: 1500
     }),
     TIMEOUT_MS
   );
@@ -80,7 +80,7 @@ export async function queryGemini(topic, context) {
   const userPrompt = `Research and provide detailed information about: ${topic}`;
 
   const model = getGoogleAI().getGenerativeModel({
-    model: 'gemini-1.5-pro',
+    model: 'gemini-2.5-flash',
     systemInstruction: systemPrompt
   });
 
