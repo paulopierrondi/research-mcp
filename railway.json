@@ -20,7 +20,7 @@
       "$default": ""
     },
     "TIMEOUT_MS": {
-      "$default": "6000"
+      "$default": "30000"
     },
     "MAX_RETRIES": {
       "$default": "1"
